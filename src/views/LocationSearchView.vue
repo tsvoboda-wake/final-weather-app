@@ -4,6 +4,7 @@ import SearchInput from '../components/SearchInput.vue'
 import WeatherCard from '../components/WeatherCard.vue'
 import LocationList from '../components/LocationList.vue'
 
+// TODO: need to be able to save list of locations even after navigating away from page
 const places = ref([])
 const addPlace = (data) => {
   places.value.push(data)
@@ -39,14 +40,11 @@ const deletePlace = (name) => {
     </div>
 
     <!-- Weather cards -->
-    <div class="grid grid-cols-2 gap-4">
+    <!-- <div class="grid grid-cols-2 gap-4">
       <div v-for="(place, idx) in places" :key="idx">
         <WeatherCard :place="place" @delete-place="deletePlace" />
       </div>
-    </div>
+    </div> -->
 
-    <!-- TODO: in lieu of weather cards on main page, show as list of saved locations
-      include delete button for each 
-    -->
   </div>
 </template>

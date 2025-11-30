@@ -1,9 +1,8 @@
 <script setup>
-import Navigation from './components/Navigation.vue'
 </script>
 <template>
   <main>
-    <Navigation />
+    <router-link to="/">Search Locations</router-link>
     <router-view />
   </main>
 </template>
