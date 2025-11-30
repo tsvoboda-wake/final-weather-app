@@ -30,6 +30,7 @@ const removePlace = (placeName) => {
         <i class="fa-solid fa-clock"></i>
         <h1 class="text-3xl">
           {{ new Date(place.location.localtime).getHours() }}:{{
+            // TODO: fix. currently 2:03am shows as 2:3
             new Date(place.location.localtime).getMinutes()
           }}
         </h1>
