@@ -3,6 +3,7 @@ import { reactive } from 'vue'
 
 const emit = defineEmits(['place-data'])
 
+// show query as blank, clear initial timeout and results
 const searchTerm = reactive({
   query: '',
   timeout: null,
@@ -19,7 +20,6 @@ const handleSearch = () => {
 
       const data = await res.json()
       searchTerm.results = data
-      console.log(data)
     } else {
       searchTerm.results = null
     }
@@ -41,6 +41,7 @@ const getWeather = async (id) => {
 <template>
   <div>
     <!-- search field -->
+     <!-- Type text, on click: get results from Weather API (handleSearch) returned in array -->
     <form>
       <div class="bg-white border border-indigo-600/30 rounded-lg shadow-lg flex items-center">
         <i class="fa-solid fa-magnifying-glass p-2 text-indigo-600"></i>
@@ -54,6 +55,9 @@ const getWeather = async (id) => {
       </div>
     </form>
     <!-- search suggestions -->
+     <!-- For each array item, show dropdown item with name listing -->
+      <!-- On click, getWeather using API and result id 
+       AND emit 'place-data' to App.vue AND reset query/results; -->
     <div class="bg-white my-2 rounded-lg shadow-lg">
       <div>
         <div v-if="searchTerm.results !== null">
