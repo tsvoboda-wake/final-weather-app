@@ -9,7 +9,9 @@ const setViewLocation = (newView, place) => {
 <!-- Saved Locations List -->
 <template>
 <Transition name="fade">
-  <div class="p-10 rounded-lg shadow-lg gap-6 mb-6 relative overflow-hidden">
+  <!-- TODO: move spacing to fit mobile -->
+   <!-- https://tailwindcss.com/docs/responsive-design -->
+  <div class="@container p-10 rounded-lg shadow-lg gap-6 mb-6 relative ">
     <div class="mb-2 flex justify-between items-center">
       <div class="flex items-center justify-center gap-2">
         <i class="fa-solid fa-location-dot"></i>

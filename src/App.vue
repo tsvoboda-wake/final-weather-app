@@ -4,13 +4,14 @@ import SearchInput from './components/SearchInput.vue'
 import LocationsList from './components/LocationsList.vue'
 import ForecastView from './components/ForecastView.vue'
 import HourlyView from './components/HourlyView.vue'
+
 const places = ref([])
+const view = ref('main')
+const detailLocation = ref(null)
+
 const addPlace = (data) => {
   places.value.push(data)
 }
-
-const view = ref('main')
-const detailLocation = ref(null)
 
 const deletePlace = (name) => {
   places.value = places.value.filter((p) => p.location.name !== name)

@@ -14,8 +14,7 @@ const emit = defineEmits(['back-to-search'])
       <button @click="$emit('back-to-search')" class="p-1">Back to Search</button>
     </div>
 
-    <div class="bg-day text-white p-10 rounded-lg shadow-lg gap-6 mb-6 relative overflow-hidden">
-      <!-- <div class="flex items-center justify-between gap-2"> -->
+    <div class="@container bg-day text-white p-10 rounded-lg shadow-lg gap-6 mb-6 relative overflow-hidden">
       <!-- location -->
       <div class="flex items-center justify-center gap-2">
         <i class="fa-solid fa-location-dot"></i>
@@ -23,7 +22,7 @@ const emit = defineEmits(['back-to-search'])
       </div>
 
       <div v-for="(day, idx) in place.forecast.forecastday" :key="idx">
-        <div class="mb-2 flex items-center justify-between">
+        <div class="@contanier mb-2 flex items-center justify-between">
           <table class="w-full">
             <tr>
               <!-- day of the week -->
@@ -31,11 +30,11 @@ const emit = defineEmits(['back-to-search'])
                 {{ new Date(day.date).toLocaleDateString('en-us', { weekday: 'long' }) }}
               </td>
 
-              <!-- icon -->
+              <!-- weather condition -->
               <td>
-                <div class="flex items-center">
-                  <img :src="day.day.condition.icon" aria-hidden="true" width="30" />
-                  <p>{{ day.day.condition.text }}</p>
+                <div class="flex items-center max-sm:justify-end">
+                  <img :src="day.day.condition.icon" aria-hidden="true" width="30" class=/>
+                  <p class="max-sm:hidden">{{ day.day.condition.text }}</p>
                 </div>
               </td>
 

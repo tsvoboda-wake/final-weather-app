@@ -73,7 +73,7 @@ const getTodayWeather = () => {
         <!-- TODO: dynamic image based on conditions -->
         <img
           :src="props.place.current.condition.icon"
-          alt="icon"
+          aria-hidden="true"
           width="200"
           class="mx-auto -mb-10"
         />
@@ -85,7 +85,7 @@ const getTodayWeather = () => {
           Current tempurature: {{ Math.round(props.place.current.temp_f) }}&deg;F
         </h1>
         <br />
-        <!-- TODO: read docs, add a11y; make size responsive -->
+        <!-- TODO: read docs, add a11y; make size responsive, get max-height -->
         <div>
           <Bar :data="getTodayWeather()" :options="{ responsive: true }" />
         </div>
@@ -112,9 +112,5 @@ const getTodayWeather = () => {
 .fade-enter-from,
 .fade-leave-to {
   opacity: 0;
-}
-
-.text-3x1 {
-  color: black;
 }
 </style>
