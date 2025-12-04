@@ -1,39 +1,45 @@
 <script setup>
 import BorderLine from './BorderLine.vue'
 import { Bar } from 'vue-chartjs'
-import { Chart as ChartJS, Title, Tooltip, Legend, BarElement, CategoryScale, LinearScale } from 'chart.js'
+import {
+  Chart as ChartJS,
+  Title,
+  Tooltip,
+  Legend,
+  BarElement,
+  CategoryScale,
+  LinearScale,
+} from 'chart.js'
 
 ChartJS.register(Title, Tooltip, Legend, BarElement, CategoryScale, LinearScale)
 
-const props = defineProps({place: Object})
+const props = defineProps({ place: Object })
 const emit = defineEmits(['back-to-search'])
-
 
 const getTodayWeather = () => {
   const hours = props.place.forecast.forecastday[0].hour
 
-  const labels = hours.map(h => h.time.split(" ")[1])
-  const temps = hours.map(h => h.temp_f)
-  const precip = hours.map(h => h.precip_in)
+  const labels = hours.map((h) => h.time.split(' ')[1])
+  const temps = hours.map((h) => h.temp_f)
+  const precip = hours.map((h) => h.precip_in)
 
   const weatherData = {
     labels,
     datasets: [
       {
-        label: "Temperature (°F)",
+        label: 'Temperature (°F)',
         data: temps,
-        backgroundColor: "rgba(255, 99, 132, 0.5)"
+        backgroundColor: 'rgba(255, 99, 132, 0.5)',
       },
       {
-        label: "Precipitation (in)",
+        label: 'Precipitation (in)',
         data: precip,
-        backgroundColor: "rgba(54, 162, 235, 0.5)"
-      }
-    ]
+        backgroundColor: 'rgba(54, 162, 235, 0.5)',
+      },
+    ],
   }
   return weatherData
 }
-
 </script>
 
 <template>
@@ -62,9 +68,15 @@ const getTodayWeather = () => {
           </h1>
         </div>
       </div>
+
       <div class="text-center flex-1">
         <!-- TODO: dynamic image based on conditions -->
-        <img :src="props.place.current.condition.icon" alt="icon" width="200" class="mx-auto -mb-10" />
+        <img
+          :src="props.place.current.condition.icon"
+          alt="icon"
+          width="200"
+          class="mx-auto -mb-10"
+        />
         <p class="text-2xl">{{ props.place.current.condition.text }}</p>
         <BorderLine />
 
@@ -72,17 +84,15 @@ const getTodayWeather = () => {
         <h1 class="text-2xl">
           Current tempurature: {{ Math.round(props.place.current.temp_f) }}&deg;F
         </h1>
-        <br/>
+        <br />
         <!-- TODO: read docs, add a11y; make size responsive -->
-        <div >
-          <Bar :data="getTodayWeather()" :options="{ responsive: true }"/>
+        <div>
+          <Bar :data="getTodayWeather()" :options="{ responsive: true }" />
         </div>
-    </div>
-
+      </div>
     </div>
   </div>
 </template>
-
 
 <style scoped>
 .bg-day {

@@ -3,8 +3,7 @@ import { ref } from 'vue'
 import SearchInput from './components/SearchInput.vue'
 import LocationsList from './components/LocationsList.vue'
 import ForecastView from './components/ForecastView.vue'
-import HourlyView
- from './components/HourlyView.vue'
+import HourlyView from './components/HourlyView.vue'
 const places = ref([])
 const addPlace = (data) => {
   places.value.push(data)
@@ -14,7 +13,7 @@ const view = ref('main')
 const detailLocation = ref(null)
 
 const deletePlace = (name) => {
-    places.value = places.value.filter((p) => p.location.name !== name)
+  places.value = places.value.filter((p) => p.location.name !== name)
 }
 
 const setDetailView = (newView, place) => {
@@ -45,7 +44,7 @@ const setDetailView = (newView, place) => {
       <!-- Saved Locations List -->
       <div>
         <div v-for="(place, idx) in places" :key="idx">
-          <LocationsList 
+          <LocationsList
             :place="place"
             :view="view"
             @delete-place="deletePlace"
@@ -54,23 +53,15 @@ const setDetailView = (newView, place) => {
         </div>
       </div>
     </div>
-    
+
     <!-- Hourly View -->
     <div v-if="view === 'hourly' && detailLocation !== null">
-        <HourlyView 
-          :place="detailLocation"
-          :view="view"
-          @back-to-search="view='main'"
-        />
-     </div>
+      <HourlyView :place="detailLocation" :view="view" @back-to-search="view = 'main'" />
+    </div>
 
     <!-- Forecast View -->
-     <div v-if="view === 'forecast' && detailLocation !== null">
-        <ForecastView 
-          :place="detailLocation"
-          :view="view"
-          @back-to-search="view='main'"
-        />
-     </div>
+    <div v-if="view === 'forecast' && detailLocation !== null">
+      <ForecastView :place="detailLocation" :view="view" @back-to-search="view = 'main'" />
+    </div>
   </main>
 </template>
