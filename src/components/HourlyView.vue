@@ -1,7 +1,6 @@
 <script setup>
-import { ref } from 'vue'
 import BorderLine from './BorderLine.vue'
-import { Bar, Line } from 'vue-chartjs'
+import { Bar } from 'vue-chartjs'
 import { Chart as ChartJS, Title, Tooltip, Legend, BarElement, CategoryScale, LinearScale } from 'chart.js'
 
 ChartJS.register(Title, Tooltip, Legend, BarElement, CategoryScale, LinearScale)
@@ -9,36 +8,22 @@ ChartJS.register(Title, Tooltip, Legend, BarElement, CategoryScale, LinearScale)
 const props = defineProps({place: Object})
 const emit = defineEmits(['back-to-search'])
 
-// const tempData = ref(null)
-// const precipData = ref(null)
 
-const getTodayWeather = (dataSet) => {
-
+const getTodayWeather = () => {
   const hours = props.place.forecast.forecastday[0].hour
 
-  // Extract labels (hour times)
   const labels = hours.map(h => h.time.split(" ")[1])
-
-  // Extract temperature (°F)
   const temps = hours.map(h => h.temp_f)
-
-  // Extract precipitation (inches)
   const precip = hours.map(h => h.precip_in)
 
-  const tempData = {
+  const weatherData = {
     labels,
     datasets: [
       {
         label: "Temperature (°F)",
         data: temps,
         backgroundColor: "rgba(255, 99, 132, 0.5)"
-      }
-    ]
-  }
-
-  const precipData = {
-    labels,
-    datasets: [
+      },
       {
         label: "Precipitation (in)",
         data: precip,
@@ -46,9 +31,7 @@ const getTodayWeather = (dataSet) => {
       }
     ]
   }
-
-  if (dataSet === 'precip') return precipData
-  else return tempData
+  return weatherData
 }
 
 </script>
@@ -86,18 +69,13 @@ const getTodayWeather = (dataSet) => {
         <BorderLine />
 
         <!-- Chart -->
-        <!-- include a bar or line chart in weather app project using Vue and Chart.js to display both of the following:
-            - hourly temperatures for the current day
-            - rain amounts for the current day 
-        -->
-        <h1 class="text-9xl mb-2">
-          {{ Math.round(props.place.current.temp_f) }}&deg;F
+        <h1 class="text-2xl">
+          Current tempurature: {{ Math.round(props.place.current.temp_f) }}&deg;F
         </h1>
-        <!-- TODO: read docs, add a11y -->
+        <br/>
+        <!-- TODO: read docs, add a11y; make size responsive -->
         <div >
-          <Bar :data="getTodayWeather('temp')" :options="{ responsive: true, scales: {y: { beginAtZero: true}} }"/>
-          <Bar :data="getTodayWeather('precip')" :options="{ responsive: true }"/>
-          <!-- <div v-else>No data available</div> -->
+          <Bar :data="getTodayWeather()" :options="{ responsive: true }"/>
         </div>
     </div>
 
