@@ -40,6 +40,15 @@ const getTodayWeather = () => {
   }
   return weatherData
 }
+
+const getCurrentWeatherImg = () => {
+  const currentCondition = props.place.current.condition.text.toLowerCase()
+  if (currentCondition.includes("sunny")) return "./src/images/sun.jpg"
+  else if (currentCondition.includes("clear")) return './src/images/moon.jpg'
+  else if (currentCondition.includes("rain")) return './src/images/rain.jpg'
+  else if (currentCondition.includes("snow")) return './src/images/snow.jpg'
+  else return props.place.current.condition.icon
+}
 </script>
 
 <template>
@@ -61,18 +70,14 @@ const getTodayWeather = () => {
         <div class="flex items-center justify-center gap-2">
           <i class="fa-solid fa-clock"></i>
           <h1 class="text-3xl">
-            {{ new Date(place.location.localtime).getHours() }}:{{
-              // TODO: fix. currently 2:03am shows as 2:3
-              new Date(place.location.localtime).getMinutes()
-            }}
+            {{ new Date(place.location.localtime).toLocaleTimeString([], {hour: '2-digit', minute: '2-digit'}) }}
           </h1>
         </div>
       </div>
 
       <div class="text-center flex-1">
-        <!-- TODO: dynamic image based on conditions -->
         <img
-          :src="props.place.current.condition.icon"
+          :src="getCurrentWeatherImg()"
           aria-hidden="true"
           width="200"
           class="mx-auto -mb-10"

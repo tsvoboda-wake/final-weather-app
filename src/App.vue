@@ -66,3 +66,9 @@ const setDetailView = (newView, place) => {
     </div>
   </main>
 </template>
+<!-- 
+rain: Max Bender https://unsplash.com/photos/water-droplets-on-clear-glass-1YHXFeOYpN0
+sun: Mikhail Fetsik https://unsplash.com/photos/rocky-mountain-under-blue-sky-during-daytime-MTFaV10uBnI
+snow: Aaron Burden https://unsplash.com/photos/focused-photo-of-a-snow-flake-5AiWn2U10cw
+moon: Altınay Dinç https://unsplash.com/photos/full-moon-and-clouds-LluELtL5mK4
+-->

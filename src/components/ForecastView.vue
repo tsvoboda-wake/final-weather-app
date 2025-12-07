@@ -14,7 +14,9 @@ const emit = defineEmits(['back-to-search'])
       <button @click="$emit('back-to-search')" class="p-1">Back to Search</button>
     </div>
 
-    <div class="@container bg-day text-white p-10 rounded-lg shadow-lg gap-6 mb-6 relative overflow-hidden">
+    <div
+      class="@container bg-day text-white p-10 rounded-lg shadow-lg gap-6 mb-6 relative overflow-hidden"
+    >
       <!-- location -->
       <div class="flex items-center justify-center gap-2">
         <i class="fa-solid fa-location-dot"></i>
@@ -33,7 +35,7 @@ const emit = defineEmits(['back-to-search'])
               <!-- weather condition -->
               <td>
                 <div class="flex items-center max-sm:justify-end">
-                  <img :src="day.day.condition.icon" aria-hidden="true" width="30" class=/>
+                  <img :src="day.day.condition.icon" aria-hidden="true" width="30" class="" />
                   <p class="max-sm:hidden">{{ day.day.condition.text }}</p>
                 </div>
               </td>
