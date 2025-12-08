@@ -11,6 +11,11 @@ import {
   LinearScale,
 } from 'chart.js'
 
+import moon from '../images/moon.jpg'
+import sun from '../images/sun.jpg'
+import snow from '../images/snow.jpg'
+import rain from '../images/rain.jpg'
+
 ChartJS.register(Title, Tooltip, Legend, BarElement, CategoryScale, LinearScale)
 
 const props = defineProps({ place: Object })
@@ -43,10 +48,10 @@ const getTodayWeather = () => {
 
 const getCurrentWeatherImg = () => {
   const currentCondition = props.place.current.condition.text.toLowerCase()
-  if (currentCondition.includes("sunny")) return "./src/images/sun.jpg"
-  else if (currentCondition.includes("clear")) return './src/images/moon.jpg'
-  else if (currentCondition.includes("rain")) return './src/images/rain.jpg'
-  else if (currentCondition.includes("snow")) return './src/images/snow.jpg'
+  if (currentCondition.includes("sunny")) return sun
+  else if (currentCondition.includes("clear")) return moon
+  else if (currentCondition.includes("rain")) return rain
+  else if (currentCondition.includes("snow")) return snow
   else return props.place.current.condition.icon
 }
 </script>
