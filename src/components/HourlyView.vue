@@ -90,9 +90,8 @@ const getCurrentWeatherImg = () => {
           Current tempurature: {{ Math.round(props.place.current.temp_f) }}&deg;F
         </h1>
         <br />
-        <!-- TODO: read docs, add a11y; make size responsive, get max-height -->
-        <div>
-          <Bar :data="getTodayWeather()" :options="{ responsive: true }" />
+        <div class="chart-wrapper">
+          <Bar :data="getTodayWeather()" :options="{ responsive: true, maintainAspectRatio: false }" />
         </div>
       </div>
     </div>

@@ -13,9 +13,11 @@ const setViewLocation = (newView, place) => {
     <!-- https://tailwindcss.com/docs/responsive-design -->
     <div class="@container p-10 rounded-lg shadow-lg gap-6 mb-6 relative">
       <div class="mb-2 flex justify-between items-center">
-        <div class="flex items-center justify-center gap-2">
-          <i class="fa-solid fa-location-dot"></i>
-          <h1 class="text-3xl">{{ place.location.name }}</h1>
+        <div class="block sm:flex items-center justify-center gap-2">
+          <div class="flex items-center gap-2">
+            <i class="fa-solid fa-location-dot"></i>
+            <h1 class="text-3xl">{{ place.location.name }}</h1>
+          </div>
           <button @click="setViewLocation('hourly', place)">Hourly</button> |
           <button @click="setViewLocation('forecast', place)">5 Day Forecast</button> |
           <button @click="emit('delete-place', place.location.name)">
