@@ -51,6 +51,7 @@ const getWeather = async (id) => {
           class="rounded-r-lg p-2 border-0 outline-0 focus:ring-2 focus:ring-indigo-600 ring-inset w-full"
           v-model="searchTerm.query"
           @input="handleSearch"
+          aria-label="Search for a location to add to saved locations and view weather options"
         />
       </div>
     </form>
@@ -63,6 +64,7 @@ const getWeather = async (id) => {
         <div v-if="searchTerm.results !== null">
           <div v-for="place in searchTerm.results" :key="place.id">
             <button
+              role="button"
               @click="getWeather(place.id)"
               class="px-3 my-2 hover:text-indigo-600 hover:font-bold w-full text-left"
             >

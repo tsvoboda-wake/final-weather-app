@@ -60,7 +60,7 @@ const getCurrentWeatherImg = () => {
   <div class="grid">
     <!-- Close button -->
     <div class="flex justify-end mb-10">
-      <button @click="$emit('back-to-search')" class="p-1">Back to Search</button>
+      <button @click="$emit('back-to-search')" role="button" class="p-1">Back to Search</button>
     </div>
     <div
       :class="props.place.current.is_day === 1 ? 'bg-day' : 'bg-night'"

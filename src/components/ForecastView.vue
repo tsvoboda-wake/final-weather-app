@@ -11,7 +11,7 @@ const emit = defineEmits(['back-to-search'])
 
     <!-- Close button -->
     <div class="flex justify-end mb-10">
-      <button @click="$emit('back-to-search')" class="p-1">Back to Search</button>
+      <button @click="$emit('back-to-search')" role="button" class="p-1">Back to Search</button>
     </div>
 
     <div
